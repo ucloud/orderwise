@@ -1,0 +1,276 @@
+<!DOCTYPE html>  
+<html lang="zh-CN">  
+<head>  
+    <meta charset="UTF-8">  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+    <title>OrderWise - Food Delivery Price Comparison Platform</title>  
+    <script src="https://cdn.tailwindcss.com"></script>  
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">  
+    <style>  
+        body {  
+            font-family: 'Plus Jakarta Sans', sans-serif;  
+            background-color: #fcfcfd; /* 极浅的灰色底 */  
+            color: #1a1c21; /* 深灰近黑的字体 */  
+        }  
+  
+        /* 柔和的多色背景光晕 */  
+        .bg-mesh {  
+            position: fixed;  
+            top: 0;  
+            left: 0;  
+            width: 100%;  
+            height: 100%;  
+            background:   
+                radial-gradient(at 0% 0%, rgba(219, 234, 254, 0.5) 0, transparent 50%),   
+                radial-gradient(at 100% 0%, rgba(245, 243, 255, 0.5) 0, transparent 50%),  
+                radial-gradient(at 50% 100%, rgba(236, 254, 255, 0.4) 0, transparent 50%);  
+            z-index: -1;  
+        }  
+  
+        /* 明亮的卡片 */  
+        .feature-card {  
+            width: 400px;
+            background: rgba(255, 255, 255, 0.7);  
+            backdrop-filter: blur(10px);  
+            border: 1px solid rgba(226, 232, 240, 0.8);  
+            border-radius: 20px;  
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);  
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  
+        }  
+  
+        .feature-card:hover {  
+            /* background: #ffffff;   */
+            transform: translateY(-8px);  
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);  
+            /* border-color: #3b82f6;   */
+        }  
+  
+        /* 强调文字 */  
+        .accent-text {  
+            color: #2563eb;  
+            font-weight: 600;  
+        }  
+  
+        /* 主按钮容器 */  
+        .btn-main-wrapper {  
+            position: relative;  
+            display: inline-block;  
+        }  
+
+        /* 主按钮 */  
+        .btn-main {  
+            background: #1a1c21;  
+            color: white;  
+            transition: all 0.3s ease;  
+            position: relative;  
+            z-index: 1;  
+        }  
+
+        .btn-main-wrapper:hover .btn-main {  
+            background: #3b82f6;  
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);  
+            transform: translateX(-20px);  
+        }  
+
+        /* 二维码容器 */  
+        .qrcode-container {  
+            position: absolute;  
+            left: 100%;  
+            top: 50%;  
+            width: 180px;
+            height: 197px;
+            border-radius: 12px;  
+            transform: translateY(-50%) translateX(20px);  
+            opacity: 0;  
+            pointer-events: none;  
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  
+            background: white;  
+            box-shadow: 0 0 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);  
+            z-index: 10;  
+        }  
+
+        .qrcode-container span {
+          display: block;
+          margin-top: 8px;
+          font-size: 12px;
+          color: #64748b;
+        }
+
+        .btn-main-wrapper:hover .qrcode-container {  
+            opacity: 1;  
+            transform: translateY(-50%) translateX(0);  
+            pointer-events: auto;  
+        }  
+
+        .qrcode-image {  
+            width: 180px;  
+            height: 180px;  
+            padding: 8px;  
+            margin-top: -7px;
+        }
+  
+        /* 代码块样式 */  
+        .terminal-box {  
+            background: #1e293b;  
+            color: #e2e8f0;  
+            border-radius: 12px;  
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);  
+        }  
+  
+        .nav-item {  
+            color: #64748b;  
+            font-size: 0.9rem;  
+            font-weight: 500;  
+            transition: color 0.2s;  
+        }  
+  
+        .nav-item:hover {  
+            color: #1a1c21;  
+        }  
+    </style>  
+</head>  
+<body>  
+    <div class="bg-mesh"></div>  
+  
+    <!-- 极简导航 -->  
+    <nav class="sticky top-0 z-50 bg-white/60 backdrop-blur-lg border-b border-slate-100">  
+        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">  
+            <div class="flex items-center space-x-3 flex-1">  
+                <div class="w-10 h-10 rounded-md flex items-center justify-center shadow-lg shadow-blue-200 overflow-hidden">  
+                  <img src="images/logo.jpg" alt="logo">
+                </div>  
+                <span class="text-xl font-extrabold tracking-tight text-slate-800 opacity-90">OrderWise - Food Delivery Price Comparison Platform</span>  
+            </div>  
+              
+            <div class="hidden md:flex items-center min-w-36">  
+                <a href="#cpjs" class="nav-item">Product Overview</a>  
+                <a href="#syzn" class="nav-item mr-10 ml-10">User Guide</a>  
+            </div>  
+  
+            <div class="flex items-center space-x-4">  
+                <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-slate-800 transition">CN</a>  
+                <a href="https://github.com/ucloud/orderwise-agent" target="_blank" class="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition">  
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="w-5 h-5 opacity-70" alt="GitHub">  
+                </a>  
+            </div>  
+        </div>  
+    </nav>  
+  
+    <!-- Hero Section -->  
+    <header class="pt-24 pb-20 px-8">  
+        <div class="max-w-7xl mx-auto text-center">  
+            <div class="inline-flex items-center space-x-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-blue-600 text-sm font-medium mb-8">  
+                <span class="relative flex h-2 w-2">  
+                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>  
+                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>  
+                </span>  
+                <span>Real-Time Price Comparison · Smart Recommendations</span>  
+            </div>  
+              
+            <h1 class="text-6xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight leading-tight">  
+                An Intelligent Food Delivery Price Comparison Platform <br/><span class="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">Compare Deals Across Multiple Platforms in One Click</span>  
+            </h1>  
+              
+            <p class="max-w-2xl mx-auto text-lg text-slate-500 mb-12 leading-relaxed">  
+                OrderWise using cloud-based mobile technology, the platform automatically searches leading food delivery services to compare prices, delivery fees, and additional charges in real time—helping you find the best value every time.。  
+            </p>  
+              
+            <div class="flex flex-col sm:row items-center justify-center gap-5">  
+                <div class="btn-main-wrapper">  
+                    <button class="btn-main px-10 py-4 rounded-full font-bold text-lg">  
+                        Try Now  
+                    </button>  
+                    <div class="qrcode-container">  
+                        <span>Scan to Try</span>
+                        <img src="images/qrcode.png" alt="二维码" class="qrcode-image">  
+                    </div>  
+                </div>  
+                <!-- <button class="px-10 py-4 rounded-full font-bold text-lg text-slate-600 hover:bg-slate-100 transition">  
+                    了解更多  
+                </button>   -->
+            </div>
+        </div>  
+    </header>  
+  
+    <!-- 核心能力展示 -->  
+    <section class="py-24 px-8" id="cpjs">  
+        <div class="max-w-7xl mx-auto">  
+            <div class="grid md:grid-cols-2 gap-16 items-center" style="justify-items: end;">  
+                <div class="space-y-8">  
+                    <h2 class="text-4xl font-bold text-slate-900 leading-snug">  
+                        Intelligent Price Comparison<br/>See the Best Deals at a Glance  
+                    </h2>  
+                      
+                    <div class="space-y-6">  
+                        <div class="flex gap-5">  
+                            <div class="flex-shrink-0 w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-blue-600">  
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>  
+                            </div>  
+                            <div>  
+                                <h4 class="text-xl font-bold mb-2">Real-Time Multi-Platform Search</h4>  
+                                <p class="text-slate-500">Powered by cloud-based mobile technology, the platform simultaneously searches leading food delivery services to obtain the latest product information and pricing in real time.</p>  
+                            </div>  
+                        </div>  
+
+                        <div class="flex gap-5">  
+                            <div class="flex-shrink-0 w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-cyan-600">  
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>  
+                            </div>  
+                            <div>  
+                                <h4 class="text-xl font-bold mb-2">Intelligent Price Comparison</h4>  
+                                <p class="text-slate-500">Compare all fees automatically and sort by total price to find the best deal fast.</p>  
+                            </div>  
+                        </div>  
+                    </div>
+                </div>  
+  
+                <div class="feature-card p-4 overflow-hidden shadow-2xl">  
+                    <img src="images/demo.jpg" alt="价格对比示例" class="rounded-xl w-full">  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
+  
+    <!-- 代码块 -->  
+    <section class="py-24 bg-slate-50 border-y border-slate-100" id="syzn">  
+        <div class="max-w-4xl mx-auto px-8 text-center">  
+            <h3 class="text-3xl font-bold mb-10">Quick Start</h3>  
+            <div class="terminal-box text-left overflow-hidden">  
+                <div class="bg-slate-700/50 px-5 py-3 flex items-center space-x-2">  
+                    <div class="w-3 h-3 rounded-full bg-slate-500"></div>  
+                    <div class="w-3 h-3 rounded-full bg-slate-500"></div>  
+                    <div class="w-3 h-3 rounded-full bg-slate-500"></div>  
+                </div>  
+                <div class="p-8 font-mono text-sm leading-relaxed">  
+                    <p class="text-slate-400"># Step 1: Clone Repository</p>  
+                    <p class="mt-2">git clone https://github.com/ucloud/orderwise-agent</p>  
+                    <p class="mt-2">cd orderwise</p>  
+                    <p class="text-slate-400 mt-6"># Step 2: Install Dependencies</p>  
+                    <p class="mt-2">pip install -r requirements.txt</p>  
+                    <p class="text-slate-400 mt-6"># Step 3: Run the Program</p>  
+                    <p class="mt-2">sh start-listener.sh</p>  
+                </div>  
+            </div>  
+        </div>  
+    </section>  
+  
+    <!-- 页脚 -->  
+    <footer class="py-16 px-8 bg-white border-t border-slate-100">  
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center">  
+            <div class="mb-8 md:mb-0">  
+                <div class="text-2xl font-black text-slate-800 mb-2">OrderWise</div>  
+                <p class="text-slate-400 text-sm">Intelligent Food Delivery Price Comparison, Make Every Penny Count.</p>  
+            </div>  
+              
+            <div class="flex space-x-12 text-sm font-semibold text-slate-600">  
+                <a href="#cpjs" class="hover:text-blue-600 transition">Product Overview</a>  
+                <a href="#syzn" class="hover:text-blue-600 transition">User Guide</a>  
+                <a href="mailto:" class="hover:text-blue-600 transition">Contact Us</a>  
+            </div>  
+        </div>  
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t border-slate-50 text-center text-slate-400 text-xs">  
+            © 2025 OrderWise. All rights reserved.  
+        </div>  
+    </footer>  
+</body>  
+</html>  
