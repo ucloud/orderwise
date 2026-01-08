@@ -1,10 +1,20 @@
-# ucloud.github.io/orderwise
+# OrderWise 官网
 
-## 简介
+**Make Every Penny Count.**  
+让每一分钱都花得值得。
 
-本仓库是 [orderwise-agent](https://github.com/ucloud/orderwise-agent) 的项目主页。orderwise-agent 是基于云手机技术，实现同时搜索美团、京东和淘宝闪购外卖平台，实时获取最新商品信息和价格的外卖比价智能体。
+本仓库是 [orderwise-agent](https://github.com/ucloud/orderwise-agent) 项目的官网, OrderWise 是一个智能外卖比价 Agent，
+可同时搜索多个主流外卖平台，实时获取商品信息与价格，
+并对结果进行智能排序，帮助用户快速找到最优选择。
 
 ## 相关链接
 
-- 项目主页: https://ucloud.github.io/orderwise
-- 源码仓库: https://github.com/ucloud/orderwise-agent
+- OrderWise 官网: https://ucloud.github.io/orderwise
+- OrderWise 源码: https://github.com/ucloud/orderwise-agent
+
+
+## 加入群组
+
+<div align="center">
+<img src=images/wxqrcode.jpg width="20%"/>
+</div>
