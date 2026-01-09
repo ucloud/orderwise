@@ -1,12 +1,19 @@
-# OrderWise 官网
+
+<div align="center">
+<img src=images/logo.jpg width="20%"/>
+</div>
+
+<h1 align="center">OrderWise 官网</h1>
 
 <p align="center">
   <a href="./README.md">English</a> |
   <a href="./README_CN.md">简体中文</a>
 </p>
 
-**Make Every Penny Count.**
-让每一分钱都花得值得。
+
+<p align="center">
+<b>让每一分钱都花得值得。</b>
+</p>
 
 本仓库是 [orderwise-agent](https://github.com/ucloud/orderwise-agent) 项目的官网, OrderWise 是一个智能外卖比价 Agent，
 可同时搜索多个主流外卖平台，实时获取商品信息与价格，
