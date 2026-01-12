@@ -383,13 +383,15 @@
                     <div class="w-3 h-3 rounded-full bg-slate-500"></div>  
                 </div>  
                 <div class="p-8 font-mono text-sm leading-relaxed">  
-                    <p class="text-slate-400"># Step 1: Clone Repository</p>  
-                    <p class="mt-2">git clone https://github.com/ucloud/orderwise-agent</p>  
-                    <p class="mt-2">cd orderwise</p>  
-                    <p class="text-slate-400 mt-6"># Step 2: Install Dependencies</p>  
-                    <p class="mt-2">pip install -r requirements.txt</p>  
-                    <p class="text-slate-400 mt-6"># Step 3: Run the Program</p>  
-                    <p class="mt-2">sh start-listener.sh</p>  
+                    <p class="text-slate-400"># Clone Repository</p>  
+                    <p class="mt-2">git clone https://github.com/your-org/orderwise-agent.git</p>  
+                    <p class="mt-2">cd orderwise-agent</p>  
+                    <p class="text-slate-400 mt-6"># Install Dependencies</p>
+                    <p class="mt-2">pip install -r requirements.txt</p>
+                    <p class="mt-2">Configure the model service settings in `env.sh`</p>
+                    <p class="mt-2">Configure the app-to-device mappings in `examples/app_device_mapping.json` for both cloud and physical phones.</p>
+                    <p class="text-slate-400 mt-6"># Launch Interactive MCP Mode.</p>  
+                    <p class="mt-2">bash start-mcp-server-tmux.sh</p>  
                 </div>  
             </div>  
         </div>  
