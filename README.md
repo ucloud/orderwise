@@ -3,26 +3,29 @@
 <img src=images/logo.jpg width="20%"/>
 </div>
 
-<h1 align="center">OrderWise Official Website</h1>
+<h1 align="center">OrderWise 官网</h1>
 
 <p align="center">
-  <a href="./README.md">English</a> |
-  <a href="./README_CN.md">简体中文</a>
+  <a href="./README_EN.md">English</a> |
+  <a href="./README.md">简体中文</a>
 </p>
+
 
 <p align="center">
-<b>Make Every Penny Count.</b>
+<b>让每一分钱都花得值得。</b>
 </p>
 
-This repository hosts the official website for the [orderwise-agent](https://github.com/ucloud/orderwise-agent) project. OrderWise is an intelligent food delivery price comparison Agent that can simultaneously search multiple major food delivery platforms, retrieve real-time product information and prices, and intelligently sort the results to help users quickly find the best deals.
+本仓库是 [orderwise-agent](https://github.com/ucloud/orderwise-agent) 项目的官网, OrderWise 是一个智能外卖比价 Agent，
+可同时搜索多个主流外卖平台，实时获取商品信息与价格，
+并对结果进行智能排序，帮助用户快速找到最优选择。
 
-## Links
+## 相关链接
 
-- OrderWise Website: https://ucloud.github.io/orderwise
-- OrderWise Source Code: https://github.com/ucloud/orderwise-agent
+- OrderWise 官网: https://ucloud.github.io/orderwise
+- OrderWise 源码: https://github.com/ucloud/orderwise-agent
 
 
-## Join Our Community
+## 加入群组
 
 <div align="center">
 <img src=images/wxqrcode.jpg width="20%"/>
