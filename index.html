@@ -31,7 +31,9 @@
   
         /* 明亮的卡片 */  
         .feature-card {  
-            width: 400px;
+            width: 300px;
+            flex: 0 0 300px;
+            margin-left: 20px;
             background: rgba(255, 255, 255, 0.7);  
             backdrop-filter: blur(10px);  
             border: 1px solid rgba(226, 232, 240, 0.8);  
@@ -46,6 +48,10 @@
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);  
             /* border-color: #3b82f6;   */
         }  
+
+        .feature-card img {
+            height: 483px;
+        }
   
         /* 强调文字 */  
         .accent-text {  
@@ -351,30 +357,13 @@
                 </button>   -->
             </div>
             </div>
-
-            <!-- 宣传视频 -->
-            <div style="width:300px;margin-right: 40px;margin-top: -50px;">
-                <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-slate-900">
-                    <video 
-                        class="w-full" 
-                        autoplay 
-                        muted 
-                        loop 
-                        playsinline
-                        poster="images/demo.jpg"
-                    >
-                        <source src="images/banner.mp4" type="video/mp4">
-                        您的浏览器不支持视频播放
-                    </video>
-                </div>
-            </div>
         </div>  
     </header>  
   
     <!-- 核心能力展示 -->  
     <section class="py-24 px-8" id="cpjs">  
         <div class="max-w-7xl mx-auto">  
-            <div class="grid md:grid-cols-2 gap-16 items-center" style="justify-items: end;">  
+            <div class="flex items-center">  
                 <div class="space-y-8">  
                     <h2 class="text-4xl font-bold text-slate-900 leading-snug">  
                         智能比价技术<br/>让优惠一目了然  
@@ -402,6 +391,23 @@
                         </div>  
                     </div>
                 </div>  
+
+                <div class="feature-card p-4 overflow-hidden shadow-2xl">
+                    <!-- 宣传视频 -->
+                    <div class="relative rounded-2xl overflow-hidden bg-slate-900">
+                        <video 
+                            class="w-full" 
+                            autoplay 
+                            muted 
+                            loop 
+                            playsinline
+                            poster="images/demo.jpg"
+                        >
+                            <source src="images/banner.mp4" type="video/mp4">
+                            您的浏览器不支持视频播放
+                        </video>
+                    </div>
+                </div>
   
                 <div class="feature-card p-4 overflow-hidden shadow-2xl">  
                     <img src="images/demo.jpg" alt="价格对比示例" class="rounded-xl w-full">  
