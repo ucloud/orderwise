@@ -1,101 +1,101 @@
-<!DOCTYPE html>  
-<html lang="zh-CN">  
-<head>  
-    <meta charset="UTF-8">  
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OrderWise - 外卖比价智能体</title>
     <link rel="shortcut icon" href="favicon.jpg" type="image/x-icon" />
     <link rel="icon" type="image/png" href="favicon.ico">
-    <script src="https://cdn.tailwindcss.com"></script>  
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">  
-    <style>  
-        body {  
-            font-family: 'Plus Jakarta Sans', sans-serif;  
-            background-color: #fcfcfd; /* 极浅的灰色底 */  
-            color: #1a1c21; /* 深灰近黑的字体 */  
-        }  
-  
-        /* 柔和的多色背景光晕 */  
-        .bg-mesh {  
-            position: fixed;  
-            top: 0;  
-            left: 0;  
-            width: 100%;  
-            height: 100%;  
-            background:   
-                radial-gradient(at 0% 0%, rgba(219, 234, 254, 0.5) 0, transparent 50%),   
-                radial-gradient(at 100% 0%, rgba(245, 243, 255, 0.5) 0, transparent 50%),  
-                radial-gradient(at 50% 100%, rgba(236, 254, 255, 0.4) 0, transparent 50%);  
-            z-index: -1;  
-        }  
-  
-        /* 明亮的卡片 */  
-        .feature-card {  
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #fcfcfd; /* 极浅的灰色底 */
+            color: #1a1c21; /* 深灰近黑的字体 */
+        }
+
+        /* 柔和的多色背景光晕 */
+        .bg-mesh {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                radial-gradient(at 0% 0%, rgba(219, 234, 254, 0.5) 0, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(245, 243, 255, 0.5) 0, transparent 50%),
+                radial-gradient(at 50% 100%, rgba(236, 254, 255, 0.4) 0, transparent 50%);
+            z-index: -1;
+        }
+
+        /* 明亮的卡片 */
+        .feature-card {
             width: 300px;
             flex: 0 0 300px;
             margin-left: 20px;
-            background: rgba(255, 255, 255, 0.7);  
-            backdrop-filter: blur(10px);  
-            border: 1px solid rgba(226, 232, 240, 0.8);  
-            border-radius: 20px;  
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);  
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  
-        }  
-  
-        .feature-card:hover {  
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            border-radius: 20px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.02), 0 2px 4px -1px rgba(0, 0, 0, 0.01);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .feature-card:hover {
             /* background: #ffffff;   */
-            transform: translateY(-8px);  
-            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);  
+            transform: translateY(-8px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
             /* border-color: #3b82f6;   */
-        }  
+        }
 
         .feature-card img {
             height: 483px;
         }
-  
-        /* 强调文字 */  
-        .accent-text {  
-            color: #2563eb;  
-            font-weight: 600;  
-        }  
-  
-        /* 主按钮容器 */  
-        .btn-main-wrapper {  
-            position: relative;  
-            display: inline-block;  
-        }  
 
-        /* 主按钮 */  
-        .btn-main {  
-            background: #1a1c21;  
-            color: white;  
-            transition: all 0.3s ease;  
-            position: relative;  
-            z-index: 1;  
-        }  
+        /* 强调文字 */
+        .accent-text {
+            color: #2563eb;
+            font-weight: 600;
+        }
 
-        .btn-main-wrapper:hover .btn-main {  
-            background: #3b82f6;  
-            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);  
-            transform: translateX(-20px);  
-        }  
+        /* 主按钮容器 */
+        .btn-main-wrapper {
+            position: relative;
+            display: inline-block;
+        }
 
-        /* 二维码容器 */  
-        .qrcode-container {  
-            position: absolute;  
-            left: 100%;  
-            top: 50%;  
+        /* 主按钮 */
+        .btn-main {
+            background: #1a1c21;
+            color: white;
+            transition: all 0.3s ease;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-main-wrapper:hover .btn-main {
+            background: #3b82f6;
+            box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
+            transform: translateX(-20px);
+        }
+
+        /* 二维码容器 */
+        .qrcode-container {
+            position: absolute;
+            left: 100%;
+            top: 50%;
             width: 180px;
             height: 197px;
-            border-radius: 12px;  
-            transform: translateY(-50%) translateX(20px);  
-            opacity: 0;  
-            pointer-events: none;  
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);  
-            background: white;  
-            box-shadow: 0 0 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);  
-            z-index: 10;  
-        }  
+            border-radius: 12px;
+            transform: translateY(-50%) translateX(20px);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            box-shadow: 0 0 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
 
         .qrcode-container span {
           display: block;
@@ -104,27 +104,27 @@
           color: #64748b;
         }
 
-        .btn-main-wrapper:hover .qrcode-container {  
-            opacity: 1;  
-            transform: translateY(-50%) translateX(0);  
-            pointer-events: auto;  
-        }  
+        .btn-main-wrapper:hover .qrcode-container {
+            opacity: 1;
+            transform: translateY(-50%) translateX(0);
+            pointer-events: auto;
+        }
 
-        .qrcode-image {  
-            width: 180px;  
-            height: 180px;  
-            padding: 8px;  
+        .qrcode-image {
+            width: 180px;
+            height: 180px;
+            padding: 8px;
             margin-top: -7px;
         }
-  
-        /* 代码块样式 */  
-        .terminal-box {  
-            background: #1e293b;  
-            color: #e2e8f0;  
-            border-radius: 12px;  
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1);  
-        }  
-  
+
+        /* 代码块样式 */
+        .terminal-box {
+            background: #1e293b;
+            color: #e2e8f0;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
         .nav-item {
             color: #64748b;
             font-size: 0.9rem;
@@ -282,21 +282,21 @@
             color: #64748b;
             text-align: center;
         }
-    </style>  
-</head>  
-<body>  
-    <div class="bg-mesh"></div>  
-  
-    <!-- 极简导航 -->  
-    <nav class="sticky top-0 z-50 bg-white/60 backdrop-blur-lg border-b border-slate-100">  
-        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">  
-            <div class="flex items-center space-x-3 flex-1">  
-                <div class="w-10 h-10 rounded-md flex items-center justify-center shadow-lg shadow-blue-200 overflow-hidden">  
+    </style>
+</head>
+<body>
+    <div class="bg-mesh"></div>
+
+    <!-- 极简导航 -->
+    <nav class="sticky top-0 z-50 bg-white/60 backdrop-blur-lg border-b border-slate-100">
+        <div class="max-w-7xl mx-auto px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3 flex-1">
+                <div class="w-10 h-10 rounded-md flex items-center justify-center shadow-lg shadow-blue-200 overflow-hidden">
                   <img src="images/logo.jpg" alt="logo">
-                </div>  
-                <span class="text-xl font-extrabold tracking-tight text-slate-800 opacity-90">OrderWise - 外卖比价智能体</span>  
-            </div>  
-              
+                </div>
+                <span class="text-xl font-extrabold tracking-tight text-slate-800 opacity-90">OrderWise - 外卖比价智能体</span>
+            </div>
+
             <div class="hidden md:flex items-center min-w-36">
                 <a href="#cpjs" class="nav-item">产品介绍</a>
                 <a href="#cpjs" class="nav-item ml-10">演示视频</a>
@@ -312,95 +312,95 @@
                         <span>微信扫码加入社群</span>
                     </div>
                 </div>
-            </div>  
-  
-            <div class="flex items-center space-x-4">  
-                <a href="en.html" class="text-sm font-medium text-slate-500 hover:text-slate-800 transition">EN</a>  
-                <a href="https://github.com/ucloud/orderwise-agent" target="_blank" class="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition">  
-                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="w-5 h-5 opacity-70" alt="GitHub">  
-                </a>  
-            </div>  
-        </div>  
-    </nav>  
-  
-    <!-- Hero Section -->  
-    <header class="pt-24 pb-20 px-8">  
-        <div class="flex max-w-7xl mx-auto text-center">  
-            <div class="flex-1">
-            <div class="inline-flex items-center space-x-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-blue-600 text-sm font-medium mb-8">  
-                <span class="relative flex h-2 w-2">  
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>  
-                    <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>  
-                </span>  
-                <span>实时比价 · 智能推荐</span>  
-            </div>  
-              
-            <h1 class="text-6xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight leading-tight">  
-                外卖比价智能体 <br/><span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">一键对比多家平台优惠</span>  
-            </h1>  
-              
-            <p class="max-w-2xl mx-auto text-lg text-slate-500 mb-12 leading-relaxed">  
-                让每一分钱都花得值得。  
-            </p>  
-              
-            <div class="flex flex-col sm:row items-center justify-center gap-5">  
-                <div class="btn-main-wrapper">  
-                    <button class="btn-main px-10 py-4 rounded-full font-bold text-lg">  
-                        立即体验  
-                    </button>  
-                    <div class="qrcode-container">  
-                        <span>手机扫码体验</span>
-                        <img src="images/qrcode.png?v=1" alt="二维码" class="qrcode-image">  
-                    </div>  
-                </div>  
-                <!-- <button class="px-10 py-4 rounded-full font-bold text-lg text-slate-600 hover:bg-slate-100 transition">  
-                    了解更多  
-                </button>   -->
             </div>
-            </div>
-        </div>  
-    </header>  
-  
-    <!-- 核心能力展示 -->  
-    <section class="py-24 px-8" id="cpjs">  
-        <div class="max-w-7xl mx-auto">  
-            <div class="flex items-center">  
-                <div class="space-y-8">  
-                    <h2 class="text-4xl font-bold text-slate-900 leading-snug">  
-                        智能比价技术<br/>让优惠一目了然  
-                    </h2>  
-                      
-                    <div class="space-y-6">  
-                        <div class="flex gap-5">  
-                            <div class="flex-shrink-0 w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-blue-600">  
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>  
-                            </div>  
-                            <div>  
-                                <h4 class="text-xl font-bold mb-2">多平台实时搜索</h4>  
-                                <p class="text-slate-500">基于云手机技术，同时搜索美团、京东和淘宝闪购外卖平台，实时获取最新商品信息和价格。</p>  
-                            </div>  
-                        </div>  
 
-                        <div class="flex gap-5">  
-                            <div class="flex-shrink-0 w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-cyan-600">  
-                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>  
-                            </div>  
-                            <div>  
-                                <h4 class="text-xl font-bold mb-2">智能价格对比</h4>  
-                                <p class="text-slate-500">自动对比商品价格、配送费、打包费等各项费用，按总价排序，帮助您快速找到最优惠的选择。</p>  
-                            </div>  
-                        </div>  
+            <div class="flex items-center space-x-4">
+                <a href="en.html" class="text-sm font-medium text-slate-500 hover:text-slate-800 transition">EN</a>
+                <a href="https://github.com/ucloud/orderwise-agent" target="_blank" class="p-2 bg-slate-100 rounded-full hover:bg-slate-200 transition">
+                    <img src="https://cdn-icons-png.flaticon.com/512/25/25231.png" class="w-5 h-5 opacity-70" alt="GitHub">
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="pt-24 px-8">
+        <div class="flex max-w-7xl mx-auto text-center">
+            <div class="flex-1">
+                <div class="inline-flex items-center space-x-2 px-4 py-1.5 bg-blue-50 border border-blue-100 rounded-full text-blue-600 text-sm font-medium mb-8">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                    </span>
+                    <span>实时比价 · 智能推荐</span>
+                </div>
+
+                <h1 class="text-6xl md:text-7xl font-extrabold text-slate-900 mb-8 tracking-tight leading-tight">
+                    外卖比价智能体 <br/><span class="block mt-2 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">一键对比多家平台优惠</span>
+                </h1>
+
+                <p class="max-w-2xl mx-auto text-xl text-slate-500 mb-12 leading-relaxed">
+                    让每一分钱都花得值得。
+                </p>
+
+                <div class="flex flex-col sm:row items-center justify-center gap-5">
+                    <div class="btn-main-wrapper">
+                        <button class="btn-main px-10 py-4 rounded-full font-bold text-lg">
+                            立即体验
+                        </button>
+                        <div class="qrcode-container">
+                            <span>手机扫码体验</span>
+                            <img src="images/qrcode.png?v=1" alt="二维码" class="qrcode-image">
+                        </div>
                     </div>
-                </div>  
+                    <!-- <button class="px-10 py-4 rounded-full font-bold text-lg text-slate-600 hover:bg-slate-100 transition">
+                        了解更多
+                    </button>   -->
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- 核心能力展示 -->
+    <section class="pt-24 px-8 overflow-hidden" id="cpjs">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex items-center">
+                <div class="space-y-8">
+                    <h2 class="text-4xl font-bold text-slate-900 leading-snug">
+                        智能比价技术<br/>让优惠一目了然
+                    </h2>
+
+                    <div class="space-y-6">
+                        <div class="flex gap-5">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-blue-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">多平台实时搜索</h4>
+                                <p class="text-slate-500">基于云手机技术，同时搜索美团、京东和淘宝闪购外卖平台，实时获取最新商品信息和价格。</p>
+                            </div>
+                        </div>
+
+                        <div class="flex gap-5">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white shadow-md rounded-2xl flex items-center justify-center text-cyan-600">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                            </div>
+                            <div>
+                                <h4 class="text-xl font-bold mb-2">智能价格对比</h4>
+                                <p class="text-slate-500">自动对比商品价格、配送费、打包费等各项费用，按总价排序，帮助您快速找到最优惠的选择。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="feature-card p-4 overflow-hidden shadow-2xl">
                     <!-- 宣传视频 -->
                     <div class="relative rounded-2xl overflow-hidden bg-slate-900">
-                        <video 
-                            class="w-full" 
-                            autoplay 
-                            muted 
-                            loop 
+                        <video
+                            class="w-full"
+                            autoplay
+                            muted
+                            loop
                             playsinline
                             poster="images/demo.jpg"
                         >
@@ -409,17 +409,20 @@
                         </video>
                     </div>
                 </div>
-  
-                <div class="feature-card p-4 overflow-hidden shadow-2xl">  
-                    <img src="images/demo.jpg" alt="价格对比示例" class="rounded-xl w-full">  
-                </div>  
-            </div>  
-        </div>  
-    </section>  
-  
+
+                <div class="feature-card p-4 overflow-hidden shadow-2xl">
+                    <img src="images/demo.jpg" alt="价格对比示例" class="rounded-xl w-full">
+                </div>
+            </div>
+            <div style="width: 622px;float: right;font-size: 13px;color: #64748b;text-align: center;line-height: 1.8;margin-top: 50px;text-align: justify;">
+                使用建议: 商家名称可选。多个商家都有的商品（如"橘皮拿铁"）建议包含商家名称（如"Manner橘皮拿铁"）以确保比价准确；独有商品（"归云南"默认属于"霸王茶姬"）无需提供。
+            </div>
+        </div>
+    </section>
+
     <!-- 数据亮点 -->
     <section class="py-20 px-8">
-        <h3 class="text-3xl font-bold mb-10 text-center">外卖比价端到端基准测试</h3>
+        <h3 class="text-3xl font-bold mb-10 text-center text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">外卖比价端到端基准测试</h3>
         <div class="text-center text-slate-500" style="width: 1000px;margin: 0 auto 20px">OrderWise表现出色，平均执行时间提升56.9%，任务成功率提升25%，价格提取准确率提升25%，优于原始框架。</div>
         <div class="max-w-5xl mx-auto">
             <div class="grid md:grid-cols-3 gap-6">
@@ -457,12 +460,12 @@
                 </div>
             </div>
         </div>
-    </section>  
-  
+    </section>
+
     <!-- 代码块 -->
-    <section class="py-24 bg-slate-50 border-y border-slate-100" id="syzn">
+    <section class="py-20 bg-slate-50 border-y border-slate-100" id="syzn">
         <div class="max-w-4xl mx-auto px-8 text-center">
-            <h3 class="text-3xl font-bold mb-10">快速开始</h3>
+            <h3 class="text-3xl font-bold mb-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-cyan-500">快速开始</h3>
             <div class="terminal-box text-left overflow-hidden">
                 <div class="bg-slate-700/50 px-5 py-3 flex items-center space-x-2">
                     <div class="w-3 h-3 rounded-full bg-slate-500"></div>
@@ -483,5 +486,5 @@
             </div>
         </div>
     </section>
-</body>  
-</html>  
+</body>
+</html>
