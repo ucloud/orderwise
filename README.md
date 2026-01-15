@@ -28,5 +28,5 @@
 ## 加入群组
 
 <div align="center">
-<img src=images/wxqrcode.jpg width="20%"/>
+<img src=images/wxqrcode.png width="20%"/>
 </div>
