@@ -25,5 +25,5 @@ This repository hosts the official website for the [orderwise-agent](https://git
 ## Join Our Community
 
 <div align="center">
-<img src=images/wxqrcode.png width="20%"/>
+<img src=images/wxqrcode.jpg width="20%"/>
 </div>
